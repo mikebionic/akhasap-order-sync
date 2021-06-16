@@ -3,24 +3,38 @@ from datetime import datetime
 
 from main import db
 
+# should be fetched:
+# RpAccId from rp_acc arap GUID
+# DivId from Division	GUID
+# WhId from warehouse GUID
+# UId from Users (salesmanId GUID)
+# WpId from period p_id (first)
+
+# todo
+# fich_total_unit_amount = len(oinvlines)
+
+# probably need to
+# dept_id from department (new akh model)
+# plant_id from plant (new akh model)
+
 
 class Order_inv(db.Model):
 	__tablename__ = "tbl_mg_order_fich"
 	OInvId = db.Column("fich_id",db.Integer,nullable=False,primary_key=True)
 	OInvGuid = db.Column("fich_id_guid",UUID(as_uuid=True),unique=True)
-	OInvTypeId = db.Column("fich_type_id")
-	InvStatId = db.Column("ord_status_id")
-	# CurrencyId = db.Column("CurrencyId")
-	RpAccId = db.Column("arap_id")
-	# CId = db.Column("CId")
-	UId = db.Column("salesman_id")
-	DivId = db.Column("div_id")
-	WhId = db.Column("wh_id")
-	# WpId = db.Column("WpId")
-	# EmpId = db.Column("EmpId")
-	# PtId = db.Column("PtId")
-	# PmId = db.Column("PmId")
-	# PaymStatusId = db.Column("PaymStatusId")
+	OInvTypeId = db.Column("fich_type_id",db.Integer,default=12) #default??
+	InvStatId = db.Column("ord_status_id",db.Integer)
+	# CurrencyId = db.Column("CurrencyId",db.Integer)
+	RpAccId = db.Column("arap_id",db.Integer)
+	# CId = db.Column("CId",db.Integer)
+	UId = db.Column("salesman_id",db.Integer,default=1)
+	DivId = db.Column("div_id",db.Integer,default=1)
+	WhId = db.Column("wh_id",db.Integer,default=1)
+	WpId = db.Column("p_id",db.Integer,default=1)
+	# EmpId = db.Column("EmpId",db.Integer)
+	# PtId = db.Column("PtId",db.Integer)
+	# PmId = db.Column("PmId",db.Integer)
+	# PaymStatusId = db.Column("PaymStatusId",db.Integer)
 	# PaymCode = db.Column("PaymCode",db.String(500))
 	# PaymDesc = db.Column("PaymDesc",db.String(500))
 	OInvLatitude = db.Column("order_lat",db.Float,default=0.0)
@@ -42,7 +56,21 @@ class Order_inv(db.Model):
 	CreatedDate = db.Column("fich_create_date",db.DateTime,default=datetime.now())
 	ModifiedDate = db.Column("fich_modify_date",db.DateTime,default=datetime.now(),onupdate=datetime.now())
 	SyncDateTime = db.Column("sync_datetime",db.DateTime,default=datetime.now())
-	
+
+	rep_rate = db.Column("rep_rate",db.Float,default=0.0)
+	rep_total = db.Column("rep_total",db.Float,default=0.0)
+	dept_id = db.Column("dept_id",db.Integer,default=1)
+	plant_id = db.Column("plant_id",db.Integer,default=1)
+	p_id = db.Column("p_id",db.Integer,default=1)
+	inv_id = db.Column("inv_id",db.Integer,default=0)
+	T_ID = db.Column("T_ID",db.Integer,default=0)
+	payplan_id = db.Column("payplan_id",db.Integer,default=0)
+	fich_total_unit_amount = db.Column("fich_total_unit_amount",db.Float,default=0.0)
+	fich_modified = db.Column("fich_modified",db.Integer,default=0)
+	bank_acc_id_client = db.Column("bank_acc_id_client",db.Integer,default=0)
+	bank_acc_id_local = db.Column("bank_acc_id_local",db.Integer,default=0)
+	delivery_arap_id = db.Column("delivery_arap_id",db.Integer,default=0)
+
 
 	def to_json(self):
 		data = {
@@ -66,49 +94,3 @@ class Order_inv(db.Model):
 		}
 
 		return data
-
-
-# # Done
-# int fich_id
-# Guid OInvGuid
-# string fich_code
-# DateTime fich_date
-# float fich_total
-# DateTime fich_create_date
-# int fich_type_id
-# int arap_id
-# int div_id
-# int wh_id
-
-# string fich_desc
-# float fich_discount
-# float fich_nettotal
-# string fich_nettotal_text
-# int salesman_id
-# int ord_status_id
-# float order_lat
-# float order_long
-# DateTime fich_modify_date
-# DateTime sync_datetime
-# # Done
-
-
-# ???????
-# int dept_id
-# int plant_id
-# int p_id
-# int inv_id
-# int T_ID
-# ????????
-
-# string spe_code
-# string group_code
-# string security_code
-# int payplan_id
-# float rep_rate
-# float rep_total
-# float fich_total_unit_amount
-# int fich_modified
-# int bank_acc_id_client
-# int bank_acc_id_local
-# int delivery_arap_id

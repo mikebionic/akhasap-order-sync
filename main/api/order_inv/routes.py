@@ -3,9 +3,6 @@ from flask import make_response, jsonify
 from main.models import Order_inv
 from main.api.order_inv import api
 
-@api.route("/test")
-def test():
-	return "bar"
 
 @api.route("/order-inv/")
 def orders():
