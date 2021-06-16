@@ -3,5 +3,6 @@
 	"TESTING": 1,
 	"DEBUG": 0,
 	"SECRET_KEY": "LJKBHUIOGV^GDUObsjkskldjfhk",
-	"SQLALCHEMY_DATABASE_URI": "mssql+pyodbc://sa:123456@127.0.0.1:1433/akhasap_db_electronics?driver=ODBC+Driver+11+for+SQL+Server?TrustedConnection=yes"
+	"SQLALCHEMY_DATABASE_URI": "mssql+pyodbc://sa:123456@127.0.0.1:1433/akhasap_db_electronics?driver=ODBC+Driver+11+for+SQL+Server?TrustedConnection=yes",
+	"SYNCH_SHA": "security"
 }

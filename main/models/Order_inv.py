@@ -22,8 +22,8 @@ class Order_inv(db.Model):
 	__tablename__ = "tbl_mg_order_fich"
 	OInvId = db.Column("fich_id",db.Integer,nullable=False,primary_key=True)
 	OInvGuid = db.Column("fich_id_guid",UUID(as_uuid=True),unique=True)
-	OInvTypeId = db.Column("fich_type_id",db.Integer,default=12) #default??
-	InvStatId = db.Column("ord_status_id",db.Integer)
+	OInvTypeId = db.Column("fich_type_id",db.Integer,default=12)
+	InvStatId = db.Column("ord_status_id",db.Integer,default=0)
 	# CurrencyId = db.Column("CurrencyId",db.Integer)
 	RpAccId = db.Column("arap_id",db.Integer)
 	# CId = db.Column("CId",db.Integer)
@@ -61,7 +61,6 @@ class Order_inv(db.Model):
 	rep_total = db.Column("rep_total",db.Float,default=0.0)
 	dept_id = db.Column("dept_id",db.Integer,default=1)
 	plant_id = db.Column("plant_id",db.Integer,default=1)
-	p_id = db.Column("p_id",db.Integer,default=1)
 	inv_id = db.Column("inv_id",db.Integer,default=0)
 	T_ID = db.Column("T_ID",db.Integer,default=0)
 	payplan_id = db.Column("payplan_id",db.Integer,default=0)
