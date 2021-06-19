@@ -59,8 +59,8 @@ class Order_inv(db.Model):
 
 	rep_rate = db.Column("rep_rate",db.Float,default=0.0)
 	rep_total = db.Column("rep_total",db.Float,default=0.0)
-	dept_id = db.Column("dept_id",db.Integer,default=1)
-	plant_id = db.Column("plant_id",db.Integer,default=1)
+	DeptId = db.Column("dept_id",db.Integer,default=1)
+	PlantId = db.Column("plant_id",db.Integer,default=1)
 	inv_id = db.Column("inv_id",db.Integer,default=0)
 	T_ID = db.Column("T_ID",db.Integer,default=0)
 	payplan_id = db.Column("payplan_id",db.Integer,default=0)
@@ -70,6 +70,11 @@ class Order_inv(db.Model):
 	bank_acc_id_local = db.Column("bank_acc_id_local",db.Integer,default=0)
 	delivery_arap_id = db.Column("delivery_arap_id",db.Integer,default=0)
 
+	def update(self, **kwargs):
+		for key, value in kwargs.items():
+			if value is not None:
+				if hasattr(self, key):
+					setattr(self, key, value)
 
 	def to_json(self):
 		data = {
@@ -90,6 +95,9 @@ class Order_inv(db.Model):
 			"OInvDiscountAmount": self.OInvDiscountAmount,
 			"OInvFTotal": self.OInvFTotal,
 			"OInvFTotalInWrite": self.OInvFTotalInWrite,
+			"CreatedDate": self.CreatedDate,
+			"ModifiedDate": self.ModifiedDate,
+			"SyncDateTime": self.SyncDateTime,
 		}
 
 		return data

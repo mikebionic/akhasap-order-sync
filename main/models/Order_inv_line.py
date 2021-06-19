@@ -7,7 +7,6 @@ from main import db
 # OInvId
 # ResId from resource GUID
 
-
 # probably needed:
 # UnitId (fist(san))
 
@@ -43,7 +42,12 @@ class Order_inv_line(db.Model):
 	mat_inv_line_id = db.Column("mat_inv_line_id",db.Integer,default=0)
 	# fich_line_cost = db.Column("fich_line_cost",db.Integer,default=0)
 	# arap_id_ventor = db.Column("arap_id_ventor",db.Integer,default=0)
-	
+
+	def update(self, **kwargs):
+		for key, value in kwargs.items():
+			if value is not None:
+				if hasattr(self, key):
+					setattr(self, key, value)
 
 	def to_json(self):
 		data = {

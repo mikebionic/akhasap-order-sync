@@ -8,7 +8,7 @@ from main.api.order_inv import api
 
 @api.route("/order-inv/")
 @sha_required
-def orders():
+def order_inv_get():
 	orders = Order_inv.query.all()
 	data = [order.to_json() for order in orders]
 
