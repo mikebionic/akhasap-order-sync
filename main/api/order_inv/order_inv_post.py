@@ -11,14 +11,7 @@ from main.api.order_inv.utils import save_order_synch_data
 def order_inv_post():
 	req = request.get_json()
 
-	data, fails = save_order_synch_data(req)
+	res = save_order_synch_data(req)
 
-	res = {
-		"data": data,
-		"fails": fails,
-		"success_total": len(data),
-		"fail_total": len(fails),
-	}
-
-	status_code = 201 if len(data) > 0 else 200
+	status_code = 201 if res["status"] > 0 else 200
 	return make_response(jsonify(res), status_code)

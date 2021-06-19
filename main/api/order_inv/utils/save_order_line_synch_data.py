@@ -23,31 +23,25 @@ def save_order_line_synch_data(
 		order_inv_line_data = add_Order_inv_line_dict(order_inv_line_req)
 		order_inv_line_data['OInvId'] = OInvId
 
-		ResRegNo = order_inv_line_req['ResRegNo']
 		ResGuid = order_inv_line_req['ResGuid']
 
 		this_line_resource = Resource.query\
 			.filter_by(
-				ResRegNo = ResRegNo,
-				ResGuid = ResGuid,
-				GCRecord = None)\
+				ResGuid = ResGuid)\
 			.first()
 
 		try:
 			if not this_line_resource:
-				print(f"order has no resource by guid {ResGuid} and reg no {ResRegNo}")
+				print(f"order has no resource by guid {ResGuid}")
 				raise Exception
 			order_inv_line_data["ResId"] = this_line_resource.ResId
 			order_inv_line_data["UnitId"] = this_unit.UnitId
 
-			OInvLineRegNo = order_inv_line_data['OInvLineRegNo']
 			OInvLineGuid = order_inv_line_data['OInvLineGuid']
 
 			thisOrderInvLine = Order_inv_line.query\
 				.filter_by(
-					OInvLineGuid = OInvLineGuid,
-					# OInvLineRegNo = OInvLineRegNo,
-					GCRecord = None)\
+					OInvLineGuid = OInvLineGuid)\
 				.first()
 
 			if thisOrderInvLine:

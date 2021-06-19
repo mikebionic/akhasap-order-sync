@@ -7,7 +7,7 @@ def add_Order_inv_line_dict(req):
 	OInvId = req.get('OInvId')
 	UnitId = req.get('UnitId')
 	ResId = req.get('ResId')
-	OInvLineRegNo = req.get('OInvLineRegNo')
+	# OInvLineRegNo = req.get('OInvLineRegNo')
 	OInvLineDesc = req.get('OInvLineDesc')
 	OInvLineAmount = req.get('OInvLineAmount')
 	OInvLinePrice = req.get('OInvLinePrice')
@@ -21,7 +21,7 @@ def add_Order_inv_line_dict(req):
 		"OInvId": OInvId,
 		"UnitId": UnitId,
 		"ResId": ResId,
-		"OInvLineRegNo": OInvLineRegNo,
+		# "OInvLineRegNo": OInvLineRegNo,
 		"OInvLineDesc": OInvLineDesc,
 		"OInvLineAmount": OInvLineAmount,
 		"OInvLinePrice": OInvLinePrice,

@@ -12,16 +12,16 @@ from main import db
 
 
 class Order_inv_line(db.Model):
-	__tablename__ = "tbl_mg_fich_line"
+	__tablename__ = "tbl_mg_order_fich_line"
 	OInvLineId = db.Column("fich_line_id",db.Integer,nullable=False,primary_key=True)
-	OInvLineGuid = db.Column("fich_line_guid",UUID(as_uuid=True),unique=True)
+	OInvLineGuid = db.Column("fich_line_id_guid",UUID(as_uuid=True),unique=True)
 	OInvId = db.Column("fich_id",db.Integer)
 	UnitId = db.Column("unit_det_id",db.Integer,default=1)
 	# CurrencyId = db.Column("CurrencyId",db.Integer)
 	ResId = db.Column("material_id",db.Integer)
 	# LastVendorId = db.Column("LastVendorId",db.Integer)
-	OInvLineRegNo = db.Column("fich_line_code",db.String(100),nullable=False,unique=True)
-	OInvLineDesc = db.Column("fich_line_desc",db.String(500))
+	# OInvLineRegNo = db.Column("fich_line_code",db.String(100),nullable=False,unique=True)
+	OInvLineDesc = db.Column("fich_line_desc",db.String(500),default='')
 	OInvLineAmount = db.Column("fich_line_amount",db.Float,default=0.0)
 	OInvLinePrice = db.Column("fich_line_price",db.Float,default=0.0)
 	OInvLineTotal = db.Column("fich_line_total",db.Float,default=0.0)
@@ -56,7 +56,7 @@ class Order_inv_line(db.Model):
 			"OInvId": self.OInvId,
 			"UnitId": self.UnitId,
 			"ResId": self.ResId,
-			"OInvLineRegNo": self.OInvLineRegNo,
+			# "OInvLineRegNo": self.OInvLineRegNo,
 			"OInvLineDesc": self.OInvLineDesc,
 			"OInvLineAmount": self.OInvLineAmount,
 			"OInvLinePrice": self.OInvLinePrice,

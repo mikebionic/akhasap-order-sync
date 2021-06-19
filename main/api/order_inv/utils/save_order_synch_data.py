@@ -18,9 +18,7 @@ from main.api.order_inv.utils.save_order_line_synch_data import save_order_line_
 
 
 
-def save_order_synch_data(payload):
-
-	req = payload["data"]
+def save_order_synch_data(req):
 
 	try:
 		order_invoice_data = add_Order_inv_dict(req)
@@ -89,7 +87,8 @@ def save_order_synch_data(payload):
 				"fails": fails,
 				"success_total": len(data),
 				"fail_total": len(fails),
-				"total": len(order_inv_lines_req)
+				"total": len(order_inv_lines_req),
+				"status": 1,
 			}
 
 			db.session.delete(thisOrderInv)
@@ -99,12 +98,13 @@ def save_order_synch_data(payload):
 			db.session.commit()
 
 			res = {
-				"data": thisOrderInv.to_json_api(),
+				"data": thisOrderInv.to_json(),
 				"successes": data,
 				"fails": fails,
 				"success_total": len(data),
 				"fail_total": len(fails) or 0,
-				"total": len(order_inv_lines_req)
+				"total": len(order_inv_lines_req),
+				"status": 0,
 			}
 
 		order_invoice_data['Order_inv_lines'] = data
