@@ -21,7 +21,7 @@ from main import db
 class Order_inv(db.Model):
 	__tablename__ = "tbl_mg_order_fich"
 	OInvId = db.Column("fich_id",db.Integer,nullable=False,primary_key=True)
-	OInvGuid = db.Column("fich_id_guid",UUID(as_uuid=True),unique=True)
+	OInvGuid = db.Column("OInvGuid",UUID(as_uuid=True),unique=True)
 	OInvTypeId = db.Column("fich_type_id",db.Integer,default=12)
 	InvStatId = db.Column("ord_status_id",db.Integer,default=0)
 	# CurrencyId = db.Column("CurrencyId",db.Integer)

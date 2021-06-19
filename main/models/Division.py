@@ -5,7 +5,7 @@ from main import db
 class Division(db.Model):
 	__tablename__ = "tbl_mg_division"
 	DivId = db.Column("div_id",db.Integer,nullable=False,primary_key=True)
-	DivGuid = db.Column("div_id_guid",UUID(as_uuid=True),unique=True)
+	DivGuid = db.Column("DivGuid",UUID(as_uuid=True),unique=True)
 	DivName = db.Column("div_name",db.String)
 
 	def to_json(self):
