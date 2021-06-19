@@ -21,4 +21,6 @@ class Config:
 	FLASK_ENV = main_config["FLASK_ENV"] if main_config else 'development'
 	TESTING = main_config["TESTING"] if main_config else 1
 	DEBUG = main_config["DEBUG"] if main_config else 1
+	APP_PORT = int(main_config["APP_PORT"]) if main_config else 8000
+	APP_HOST = main_config["APP_HOST"] if main_config else "0.0.0.0"
 	SQLALCHEMY_DATABASE_URI = main_config["SQLALCHEMY_DATABASE_URI"] if main_config else 'mssql+pyodbc://sa:123456@127.0.0.1:1433/akhasap_db?driver=ODBC+Driver+17+for+SQL+Server?TrustedConnection=yes'

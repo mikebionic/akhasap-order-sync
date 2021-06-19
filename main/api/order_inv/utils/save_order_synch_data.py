@@ -29,6 +29,7 @@ def save_order_synch_data(payload):
 			raise Exception
 		
 		order_inv_lines_req = req['Order_inv_lines']
+		order_invoice_data["fich_total_unit_amount"] = len(order_inv_lines_req)
 
 		DivGuid = req['DivGuid']
 		WhGuid = req['WhGuid']
@@ -95,7 +96,6 @@ def save_order_synch_data(payload):
 			db.session.commit()
 
 		else:
-			order_invoice_data["fich_total_unit_amount"] = len(order_inv_lines_req)
 			db.session.commit()
 
 			res = {
