@@ -13,8 +13,9 @@ from main import db
 
 class Order_inv_line(db.Model):
 	__tablename__ = "tbl_mg_order_fich_line"
+	__table_args__ = {'implicit_returning': False}
 	OInvLineId = db.Column("fich_line_id",db.Integer,nullable=False,primary_key=True)
-	OInvLineGuid = db.Column("OInvLineGuid",UUID(as_uuid=True),unique=True)
+	OInvLineGuid = db.Column("fich_line_guid",UUID(as_uuid=True),unique=True)
 	OInvId = db.Column("fich_id",db.Integer)
 	UnitId = db.Column("unit_det_id",db.Integer,default=1)
 	# CurrencyId = db.Column("CurrencyId",db.Integer)

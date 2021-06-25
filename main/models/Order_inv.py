@@ -20,6 +20,7 @@ from main import db
 
 class Order_inv(db.Model):
 	__tablename__ = "tbl_mg_order_fich"
+	__table_args__ = {'implicit_returning': False}
 	OInvId = db.Column("fich_id",db.Integer,nullable=False,primary_key=True)
 	OInvGuid = db.Column("OInvGuid",UUID(as_uuid=True),unique=True)
 	OInvTypeId = db.Column("fich_type_id",db.Integer,default=12)
