@@ -28,6 +28,7 @@ def save_order_synch_data(req):
 		
 		order_inv_lines_req = req['Order_inv_lines']
 		order_invoice_data["fich_total_unit_amount"] = len(order_inv_lines_req)
+		order_invoice_data["OInvTypeId"] = 12
 
 		DivGuid = req['DivGuid']
 		WhGuid = req['WhGuid']
