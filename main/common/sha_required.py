@@ -8,8 +8,8 @@ def sha_required(f):
 	def decorated(*args,**kwargs):
 		token = None
 
-		if 'sha-token' in request.headers:
-			token = request.headers['sha-token']
+		if 'x-access-token' in request.headers:
+			token = request.headers['x-access-token']
 
 		if not token:
 			return jsonify({"message": "Token is missing!"}), 401
