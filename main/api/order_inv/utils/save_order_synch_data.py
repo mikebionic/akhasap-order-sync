@@ -24,6 +24,7 @@ def save_order_synch_data(req):
 		order_invoice_data = add_Order_inv_dict(req)
 
 		if not req["Order_inv_lines"]:
+			print("Order inv lines empty!!")
 			raise Exception
 		
 		order_inv_lines_req = req['Order_inv_lines']
@@ -34,6 +35,7 @@ def save_order_synch_data(req):
 		WhGuid = req['WhGuid']
 		RpAccGuid = req['RpAccGuid']
 		UGuid = req['UGuid']
+		print("User Guid ", UGuid)
 
 		this_user = User.query.filter_by(UGuid = UGuid).first()
 		this_rp_acc = Rp_acc.query.filter_by(RpAccGuid = RpAccGuid).first()
@@ -105,7 +107,7 @@ def save_order_synch_data(req):
 				"success_total": len(data),
 				"fail_total": len(fails) or 0,
 				"total": len(order_inv_lines_req),
-				"status": 0,
+				"status": 1 if len(data)>0 else 0,
 			}
 
 		order_invoice_data['Order_inv_lines'] = data

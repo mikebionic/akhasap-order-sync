@@ -37,7 +37,7 @@ class Order_inv_line(db.Model):
 	fich_line_disc_prc = db.Column("fich_line_disc_prc",db.Float,default=0.0)
 	inv_id = db.Column("inv_id",db.Integer,default=0)
 	service_id = db.Column("service_id",db.Integer,default=0)
-	fich_line_expiredate = db.Column("fich_line_expiredate",db.DateTime)
+	fich_line_expiredate = db.Column("fich_line_expiredate",db.DateTime,default=datetime(2000,1,1))
 	fich_line_type_id = db.Column("fich_line_type_id",db.Integer,default=0)
 	fich_line_serialno = db.Column("fich_line_serialno",db.String,default="")
 	mat_inv_line_id = db.Column("mat_inv_line_id",db.Integer,default=0)

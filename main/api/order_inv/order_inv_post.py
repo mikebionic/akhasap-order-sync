@@ -10,6 +10,7 @@ from main.api.order_inv.utils import save_order_synch_data
 @sha_required
 def order_inv_post():
 	req = request.get_json()
+	print(req)
 
 	res = save_order_synch_data(req)
 
